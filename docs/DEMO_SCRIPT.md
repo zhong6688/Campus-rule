@@ -1,0 +1,27 @@
+# Demo video script (target 5 minutes; allowed 2 to 8)
+
+Face and screen must both be visible. Read it naturally; say the numbers you see on screen. If a number on screen differs from the script
+(model answers vary a little between runs), say "in my run" and give the number you see.
+
+## Before you record (10 minutes)
+1. Open the page, open the **Evaluation** tab and press **Run evaluation**. Wait about 1 minute. Click "read the answer" on questions 7, 13, 14 and set Pass or Fail.
+2. Open these tabs in this order in your browser: Ask, Products, Review classifier, Evaluation, About. Close everything else; turn off notifications.
+3. Read the script once aloud with a timer. Aim for 4 to 6 minutes.
+
+## Script
+
+| Time | On screen | Say |
+| --- | --- | --- |
+| 0:00 to 0:30 | Camera visible, Ask tab | "Hello, I'm [your name]. This is Beauty Helper. If you buy a moisturizer for the first time, or as a gift, in Singapore, you face thousands of products and reviews you cannot judge. Beauty Helper takes your skin type and budget, recommends one face moisturizer, and shows the real review quotes behind it. It also says no when it cannot support an answer." |
+| 0:30 to 1:10 | Products tab | "The knowledge base has seven everyday moisturizers from Shopee Singapore, priced between about five and forty-two dollars on the day I saw them, during a sale. One finding shaped the design. Of 114 negative reviews I collected, only about a third, forty, were about the product. The rest complained about delivery and packaging. So star ratings say little about whether a product suits your skin, and the classifier learns only from reviews about the product itself." |
+| 1:10 to 1:50 | About tab (the flow) | "Here is how it works. Step one is my own code. It reads the message, detects skin type and budget, and answers some requests itself, for example when the skin type is missing, or when you ask for lipstick or anti-ageing. Step two filters products by budget and by the skin types listed on each product page. Step three is Claude, the external model: it picks one product and writes the reason and quotes. Step four is code again, and it checks the answer. The pick must be a candidate within budget, every quote must appear word for word in the reviews, and sentences with treatment claims, or properties the page does not state, are removed. Price and link always come from the knowledge base, never from the model." |
+| 1:50 to 2:25 | Ask tab: click the first example (oily, S$40) | "First example: oily skin, humid Singapore, under forty dollars. Here is the recommended product, its price and the date I saw it, the skin types its page lists, and how many reviews are behind it, with a note that they are not a random sample. Then the reason, and quotes tagged positive or negative, and whether the tag came from my hand label or from the model. At the bottom, a patch-test line and a not-medical-advice line." |
+| 2:25 to 3:10 | Type: "I need a moisturizer." Then "Which lipstick should I buy?" Then "My son has eczema and very dry skin. Which moisturizer is good?" | "If I only say I need a moisturizer, it asks for my skin type instead of guessing. If I ask for lipstick, it declines. And if I mention eczema, it shows a notice to see a doctor or pharmacist and does not claim any treatment." |
+| 3:10 to 3:40 | Review classifier tab: click an example | "Part one is a sentiment classifier trained on 121 product reviews that I labeled by hand. It runs here in the browser. On a hold-out set it is 88 percent accurate, 87 percent in cross-validation, but 76 percent on products it has never seen, which misses my 80 percent target. It finds only about 64 percent of negative reviews." |
+| 3:40 to 4:30 | Evaluation tab: the results table | "There are fourteen scenario questions. In my run all fourteen passed the automatic checks, no quote was rejected, and in the test where I tell it to say a product cures eczema, one treatment claim was removed. I treat this as weak evidence. the questions were written after the data was collected, a pass only means the pick fits the skin type and budget, five questions are answered by code, and six of the nine picks were CeraVe, the product with the most reviews. So the system may favor products with more evidence. Each recommendation sends about 2,700 tokens to the model, an estimate; I did not look up a price." |
+| 4:30 to 5:00 | Camera visible again | "The main trade-offs: I replaced my original plan of Dify and GPT-4o-mini with Claude and my own checks, so the checks can be tested, but the app runs only inside Claude. A real service would also need a price feed and a cost estimate, which I did not measure. Next steps are more products, someone else reading the answers, and testing a language model against the classifier. The same design can scale by moving the filtering into a product database fed by the marketplace. The code, data, evaluations and report are in the repository. Thank you." |
+
+## Recording tips
+- Zoom (free): start a meeting alone, click Share screen, tick "Share sound" if you want, then Record on this computer. Your camera appears in a small window next to the shared screen. Loom also works.
+- Keep the file under 25 MB if you upload it on the GitHub website: record at 720p, or upload to YouTube as "unlisted" and put the link in the README.
+- Speak a little slower than normal. If you make a mistake, pause, then say the sentence again; you can trim later or leave it.
